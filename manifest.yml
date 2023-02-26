@@ -1,0 +1,93 @@
+modules:
+  confluence:globalSettings:
+    - key: scavenger-hunt-global-settings-confluence
+      function: confluenceSettings
+      title: Scavenger Hunt Settings
+      description: The main Admin configuration page for the Scavenger Hunt.
+      icon: https://tripleeit.com/atlassian-assets/sherlock-custom-silhouette-very-small.png
+  jira:adminPage:
+    - key: scavenger-hunt-global-settings-jira
+      function: jiraSettings
+      title: Scavenger Hunt Settings
+      description: The main Admin configuration page for the Scavenger Hunt.
+      icon: https://tripleeit.com/atlassian-assets/sherlock-custom-silhouette-very-small.png
+  jira:globalPage:
+    - key: scavenger-hunt-main-page-jira
+      function: mainPageContent
+      title: Scavenger Hunt
+      icon: https://tripleeit.com/atlassian-assets/sherlock-custom-silhouette-very-small.png
+  confluence:globalPage:
+    - key: scavenger-hunt-main-page-confluence
+      function: mainPageContent
+      title: Scavenger Hunt
+      route: scavenger-hunt
+      icon: https://tripleeit.com/atlassian-assets/sherlock-custom-silhouette-very-small.png
+  webtrigger:
+    - key: scavenger-hunt-store-data
+      function: storeReceivedData
+    - key: scavenger-hunt-fetch-data
+      function: fetchStoredData
+    - key: scavenger-hunt-delete-data
+      function: deleteStoredData
+    - key: scavenger-hunt-fetch-endpoints
+      function: fetchKnownEndpoints
+  trigger:
+    - key: scavenger-hunt-activity-trigger-jira
+      function: jiraEvents
+      events:
+        - avi:jira:created:issue
+        - avi:jira:updated:issue
+        - avi:jira:commented:issue
+    - key: scavenger-hunt-activity-trigger-confluence
+      function: confluenceEvents
+      events:
+        - avi:confluence:created:page
+        - avi:confluence:updated:page
+        - avi:confluence:liked:page
+        - avi:confluence:created:blogpost
+        - avi:confluence:updated:blogpost
+        - avi:confluence:liked:blogpost
+        - avi:confluence:created:comment
+  function:
+    - key: mainPageContent
+      handler: mainPage.run
+    - key: confluenceSettings
+      handler: globalSettings.showConfluenceSettings
+    - key: jiraSettings
+      handler: globalSettings.showJiraSettings
+    - key: storeReceivedData
+      handler: storageWebtrigger.storeReceivedData
+    - key: fetchStoredData
+      handler: storageWebtrigger.fetchStoredData
+    - key: deleteStoredData
+      handler: storageWebtrigger.deleteStoredData
+    - key: fetchKnownEndpoints
+      handler: storageWebtrigger.fetchKnownEndpoints
+    - key: jiraEvents
+      handler: eventTriggers.processJiraEvent
+    - key: confluenceEvents
+      handler: eventTriggers.processConfluenceEvent
+app:
+  id: ari:cloud:ecosystem::app/ae436d32-36bf-490d-9cd8-7a5d6937b387
+  name: Scavenger Hunt
+  licensing:
+    enabled: true
+permissions:
+  scopes:
+    - write:confluence-content
+    - read:jira-work
+    - read:confluence-content.summary
+    - storage:app
+    - write:jira-work
+    - read:jira-user
+    - read:confluence-user
+    - read:user.property:confluence
+    - write:user.property:confluence
+  external:
+    fetch:
+      client:
+        - "*.atlassian.net"
+        - "*.atlassian-dev.net"
+      backend:
+        - "*.atlassian.net"
+        - "*.atlassian-dev.net"

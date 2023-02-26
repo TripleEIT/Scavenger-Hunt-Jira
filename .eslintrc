@@ -1,0 +1,28 @@
+{
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2020,
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "plugins": ["react-hooks"],
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "indent": ["error", 4, { "SwitchCase": 1, "offsetTernaryExpressions": false }],
+        "linebreak-style": "off",
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "react/jsx-key": "off",
+        "react/react-in-jsx-scope": "off"
+    },
+    "globals": {
+        "ForgeUI": "readonly"
+    }
+}
+
