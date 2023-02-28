@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"typescript.preferences.importModuleSpecifier": "relative",
+		"cSpell.words": [
+			"blogpost",
+			"leaderboard",
+			"Webtrigger"
+		]
+	}
+}
