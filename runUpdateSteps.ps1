@@ -1,3 +1,5 @@
+throw "Has the bug with manifest been fixed?"
+
 Write-Host "Performing Lint with fix"
 forge lint --fix
 
