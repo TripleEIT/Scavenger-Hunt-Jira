@@ -70,7 +70,7 @@ modules:
 app:
   id: ari:cloud:ecosystem::app/2bd3c837-38c1-43d3-ae85-69883a8c0d48
   licensing:
-    enabled: true
+    enabled: false
 permissions:
   scopes:
     - read:jira-work
